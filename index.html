@@ -316,15 +316,24 @@
 
         .hero-img-placeholder {
             aspect-ratio: 0.8;
-            background-color: #e2e8f0;
-            border-radius: var(--radius-lg);
-            border-radius: 200px 200px 20px 20px;
+            background-color: var(--bg-surface);
+            border-radius: 200px 200px 24px 24px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* More elegant shadow */
+            border: 8px solid rgba(255, 255, 255, 0.6); /* Blends with the background */
+            transition: var(--transition-smooth);
+        }
+
+        .hero-img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 65%, rgba(15,23,42,0.3) 100%);
+            pointer-events: none; /* Allows interactions to pass through */
         }
 
         .floating-card {
@@ -696,7 +705,8 @@
                     </div>
                     
                     <div class="hero-image-container">
-                        <div class="hero-img-placeholder" style="background-image: url('https://i.imgur.com/1UHp4rO.jpeg'); background-size: cover; background-position: center;">
+                        <!-- Updated styles below to blend the image seamlessly -->
+                        <div class="hero-img-placeholder" style="background-image: url('https://i.imgur.com/1UHp4rO.jpeg'); background-size: cover; background-position: center top;">
                         </div>
                         <!-- Floating Badges -->
                         <div class="floating-card float-1">
